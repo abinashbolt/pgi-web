@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLANT GREEN INERTIA | Student Training</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #2e7d32;
+            --neon-green: #4caf50;
+            --dark-green: #1b5e20;
+            --glass: rgba(255, 255, 255, 0.1);
+            --text-light: #f4f7f6;
+            --text-dark: #333;
+            --royal-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            background-color: #fffafa;
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            padding: 0 5%; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            height: 90px; 
+            top: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo-container img {
+            height: 70px; 
+            width: auto;
+            position: relative; 
+            z-index: 1100;
+            transition: transform 0.3s ease;
+            filter: drop-shadow(0 0 10px rgba(76, 175, 80, 0.3)); 
+        }
+
+        .logo-container img:hover { transform: scale(1.05); }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links li { margin-left: 1rem; }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #14441d;
+            font-weight: 600;
+            transition: 0.3s;
+            text-transform: capitalize;
+            padding: 8px 18px;
+            border: 2px solid var(--neon-green);
+            border-radius: 12px;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+            background-color: var(--neon-green);
+            box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            margin-top: 90px;
+            height: 90vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("cp.jpg");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(1.05); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #eeeeee, var(--neon-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn {
+            background: var(--primary-green);
+            color: rgb(255, 255, 255);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 15px 30px rgb(48, 97, 5);
+            transition: 0.4s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--neon-green);
+            box-shadow: 0 20px 40px rgba(76, 175, 80, 0.4);
+            transform: translateY(-5px);
+        }
+
+        /* --- SECTIONS --- */
+        .section { padding: 5rem 10%; text-align: center; color: var(--text-dark); }
+
+        /* --- INFINITE LOOP SLIDERS --- */
+        .slider-container {
+            width: 100%;
+            overflow: hidden;
+            padding: 4rem 0;
+            position: relative;
+            background: linear-gradient(135deg, #f0fff4 0%, #ffffff 50%, #f0fff4 100%);
+        }
+
+        .slider-track {
+            display: flex;
+            gap: 2rem;
+            width: max-content;
+            animation: infiniteScroll 30s linear infinite;
+        }
+
+        .slider-track:hover { animation-play-state: paused; }
+
+        @keyframes infiniteScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-50% - 1rem)); } /* This ensures perfect loop for duplicated content */
+        }
+
+        .college-box {
+            min-width: 500px; 
+            height: 350px;    
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--royal-shadow);
+            border: 2px solid var(--neon-green);
+        }
+
+        .college-box img { width: 100%; height: 100%; object-fit: cover; }
+
+        .course-box {
+            min-width: 300px;
+            background: white;
+            border: 1px solid rgba(76, 175, 80, 0.1);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+        }
+
+        .course-box img { width: 100%; height: 180px; object-fit: cover; border-radius: 15px; margin-bottom: 1rem; }
+
+        /* --- LMS FORM STYLING --- */
+        .lms-form {
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--royal-shadow);
+            max-width: 500px;
+            margin: 20px auto;
+            text-align: left;
+        }
+
+        .lms-form input, .lms-form select, .lms-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        /* --- NAAN MUDHALVAN & FLEX BLOCKS --- */
+        .naan-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            background: white;
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: var(--royal-shadow);
+            margin-bottom: 4rem; 
+            border: 3px solid var(--neon-green);
+            flex-wrap: wrap; 
+        }
+
+        .naan-text { flex: 1; text-align: left; min-width: 280px; }
+        .naan-text h2 { color: var(--dark-green); margin-bottom: 1.5rem; font-size: 2rem; }
+        .naan-text p { margin-bottom: 12px; font-size: 1.1rem; border-left: 5px solid var(--neon-green); padding-left: 20px; color: var(--text-dark);}
+        
+        .naan-image { flex: 1; min-width: 280px; }
+        .naan-image img { width: 100%; border-radius: 20px; border: 4px solid var(--neon-green); }
+
+        .internship-flex { display: flex; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-top: 3rem; text-align: left; }
+        .intern-img { max-width: 450px; width: 100%; border-radius: 25px; border: 5px solid white; box-shadow: var(--royal-shadow); }
+        .intern-text { flex: 1; min-width: 300px; color: var(--text-dark); padding: 20px; background: white; border-radius: 20px; box-shadow: var(--royal-shadow); }
+        .intern-text h3 { margin-bottom: 1rem; color: var(--dark-green); font-size: 1.8rem; }
+
+        /* --- CONTACT & FOOTER --- */
+        #contact { background: #1e4715; padding: 2rem 10%; border-radius: 60px 60px 0 0; margin-top: 4rem; }
+        .contact-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: left; }
+        .contact-info h3 { color: #ffff00; margin-bottom: 0.8rem; font-size: 1.3rem; }
+        .contact-info p { margin-bottom: 0.4rem; color: #ebebeb; font-size: 0.95rem; }
+        .contact-info i { color: #ffff00; margin-right: 12px; }
+        .social-icons { margin-top: 1.5rem; display: flex; gap: 1.2rem; }
+        .social-icons a { font-size: 1.6rem; transition: 0.4s; text-decoration: none; }
+        .social-icons .fa-instagram { color: #E4405F; }
+        .social-icons .fa-youtube { color: #FF0000; }
+        .social-icons .fa-linkedin { color: #0077B5; }
+        .social-icons .fa-whatsapp { color: #25D366; }
+
+        footer { padding: 1.5rem; background: #1a480f; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+
+        @media (max-width: 768px) {
+            nav { height: auto; padding: 15px 5%; flex-direction: column; gap: 15px; }
+            .nav-links { flex-wrap: wrap; justify-content: center; width: 100%; }
+            .hero { margin-top: 140px; }
+            .naan-container { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="logo-container">
+            <a href="#"><img src="pgi logo.jpg" alt="Plant Green Inertia Logo"></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#internships">Internships</a></li>
+            <li><a href="#our courses">Our Courses</a></li>
+            <li><a href="#digitalmarketing">LMS Portal</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1>World's First Experiential Company</h1>
+        <p>Bridge the gap between college and the corporate world with industry-expert training.</p>
+        <br>
+        <a href="company_brochure.pdf" download="PGI_Company_Brochure" class="btn">Explore Programs</a>
+    </section>
+
+    <section class="section" id="about">
+        <div class="naan-container">
+            <div class="naan-text">
+                <h2>Naan Mudhalvan</h2>
+                <p>Naan Mudhalvan is a Tamil Nadu government initiative empowering youth with industry-ready skills.</p>
+                <p>Our company is proud to partner with this flagship program to bridge the academic-professional gap.</p>
+                <p>Together, we provide specialized training modules designed to meet the demands of the modern workforce.</p>
+                <p>This collaboration ensures students gain hands-on experience and globally recognized certifications for career success.</p>
+                <p>We are committed to shaping the next generation of leaders through this prestigious government alliance.</p>
+            </div>
+            <div class="naan-image">
+                <img src="NM logo.jpg" alt="Naan Mudhalvan">
+            </div>
+        </div>
+
+        <h2 style="color: var(--dark-green); font-size: 2.5rem; margin-bottom: 1rem;">Work with College</h2>
+        <div class="slider-container">
+            <div class="slider-track">
+                <div class="college-box"><img src="Screenshot 2026-01-29 155218.png" alt="College 1"></div>
+                <div class="college-box"><img src="Screenshot 2026-01-29 155236.png" alt="College 2"></div>
+                <div class="college-box"><img src="Screenshot 2026-01-29 155304.png" alt="College 3"></div>
+                <div class="college-box"><img src="Screenshot 2026-01-29 155335.png" alt="College 4"></div>
+                <div class="college-box"><img src="Screenshot 2026-01-29 155134.png" alt="College 5"></div>
+                <div class="college-box"><img src="WhatsApp Image 2026-01-29 at 4.34.37 PM.jpeg" alt="College 6"></div>
+                <div class="college-box"><img src="WhatsApp Image 2026-01-29 at 4.11.49 PM.jpeg" alt="College 7"></div>
+                <div class="college-box"><img src="Screenshot 2026-01-29 155218.png" alt="College 1"></div>
+                <div class="college-box"><img src="Screenshot 2026-01-29 155236.png" alt="College 2"></div>
+                <div class="college-box"><img src="Screenshot 2026-01-29 155304.png" alt="College 3"></div>
+                <div class="college-box"><img src="Screenshot 2026-01-29 155335.png" alt="College 4"></div>
+                <div class="college-box"><img src="Screenshot 2026-01-29 155134.png" alt="College 5"></div>
+                <div class="college-box"><img src="WhatsApp Image 2026-01-29 at 4.34.37 PM.jpeg" alt="College 6"></div>
+                <div class="college-box"><img src="WhatsApp Image 2026-01-29 at 4.11.49 PM.jpeg" alt="College 7"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="internships" style="background: rgba(46, 125, 50, 0.05);">
+        <h2 style="color: var(--dark-green); font-size: 2.5rem; margin-bottom: 1rem;">Internship Programs</h2>
+        <div class="internship-flex">
+            <img src="intern pgi.jpeg" alt="Internship Image" class="intern-img">
+            <div class="intern-text">
+                <h3>Hands-on Experience</h3>
+                <p>Join our 3-month immersive internship program.</p>
+                <p>Work on live projects and gain real-world industry exposure.</p>
+                <p>Gain certificates that boost your professional resume significantly.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="our courses">
+        <h2 style="color: var(--dark-green); font-size: 2.5rem; margin-bottom: 1rem;">Our Courses</h2>
+        <div class="slider-container">
+            <div class="slider-track">
+                <div class="course-box"><img src="Gemini_Generated_Image_66k55x66k55x66k5.png" alt="Soft Skill"><h3>Soft Skill</h3><p>4 Weeks</p></div>
+                <div class="course-box"><img src="Gemini_Generated_Image_9repc99repc99rep.png" alt="Digital Marketing"><h3>Digital Marketing</h3><p>8 Weeks</p></div>
+                <div class="course-box"><img src="Gemini_Generated_Image_fu1rjofu1rjofu1r.png" alt="Entrepreneurship"><h3>Entrepreneurship</h3><p>4 Weeks</p></div>
+                <div class="course-box"><img src="Gemini_Generated_Image_6oxmsp6oxmsp6oxm.png" alt="Full stack development"><h3>Full stack</h3><p>12 Weeks</p></div>
+                
+                <div class="course-box"><img src="Gemini_Generated_Image_66k55x66k55x66k5.png" alt="Soft Skill"><h3>Soft Skill</h3><p>4 Weeks</p></div>
+                <div class="course-box"><img src="Gemini_Generated_Image_9repc99repc99rep.png" alt="Digital Marketing"><h3>Digital Marketing</h3><p>8 Weeks</p></div>
+                <div class="course-box"><img src="Gemini_Generated_Image_fu1rjofu1rjofu1r.png" alt="Entrepreneurship"><h3>Entrepreneurship</h3><p>4 Weeks</p></div>
+                <div class="course-box"><img src="Gemini_Generated_Image_6oxmsp6oxmsp6oxm.png" alt="Full stack development"><h3>Full stack</h3><p>12 Weeks</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="digitalmarketing" style="background: #f1f8e9;">
+        <h2 style="color: var(--dark-green); font-size: 2.5rem;">Digital Marketing LMS Portal</h2>
+        
+        <div class="internship-flex">
+            <div class="intern-text" style="max-width: 500px;">
+                <h3>Existing Students</h3>
+                <p><i class="fas fa-laptop-code"></i> Access your course modules, assignments, and live session recordings.</p>
+                <br>
+                <a href="https://digitalmarketingclass.netlify.app" target="_blank" class="btn">Login to LMS Portal <i class="fas fa-sign-in-alt"></i></a>
+            </div>
+
+            <div class="lms-form">
+                <h3>Request Access / Enroll</h3>
+                <form action="https://formspree.io/f/xgozgprr" method="POST">
+                    <input type="text" name="name" placeholder="Full Name" required>
+                    <input type="email" name="email" placeholder="Email Address" required>
+                    <select name="course">
+                        <option value="Digital Marketing">Digital Marketing</option>
+                        <option value="Full Stack">Full Stack Development</option>
+                        <option value="Soft Skills">Soft Skills</option>
+                    </select>
+                    <textarea name="message" rows="3" placeholder="College Name / Enquiry"></textarea>
+                    <button type="submit" class="btn" style="width: 100%;">Submit Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section">
+            <h2 style="color: white; margin-bottom: 2rem;">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Our Office</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> No: 4, Alapakkam Main Road, Maduravoyal, Chennai - 600095</p>
+                </div>
+                <div class="contact-info">
+                    <h3>Contact Details</h3>
+                    <p><i class="fas fa-phone"></i> +91 9345029705</p>
+                    <p><i class="fas fa-envelope"></i> plantgreeninertia@gmail.com</p>
+                </div>
+                <div class="contact-info">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/plantgreeninertia?igsh=ZTdnamExbHNjaG13" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://youtube.com/@plantgreeninertia?si=AvcaK95ELNswqdP8" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.linkedin.com/company/plantgreeninertia/?viewAsMember=true" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://wa.me/919345029705" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Plant Green Inertia. Dedicated to Student Excellence.</p>
+    </footer>
+
+    <script>
+        let lastScrollTop = 0;
+        const navbar = document.getElementById("navbar");
+        window.addEventListener("scroll", function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > 300) {
+                navbar.style.top = "-150px";
+            } else {
+                navbar.style.top = "0";
+                navbar.style.boxShadow = scrollTop > 50 ? "0 10px 30px rgba(0,0,0,0.1)" : "none";
+            }
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html>
